@@ -1,46 +1,34 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>懿昇翼墅家</title>
+  <title>加入LINE官方帳號</title>
   <style>
-    /* 重置與基礎設定 */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* 重置與基礎樣式 */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
+      font-family: "Noto Sans TC", sans-serif;
       width: 100%;
       min-height: 100vh;
-      font-family: "Noto Sans TC", sans-serif;
-      background-color: #f9f7f2; /* 預設底色 */
-      /* 手機全螢幕顯示時，若想強制 1080x1920，可用下方固定大小，但一般情況下可用100%自動適應 */
-      /* width: 1080px;
-      height: 1920px; */
       overflow: hidden;
       position: relative;
+      background-color: #f9f7f2;
     }
-
-    /* 背景大圖：自然田野風格 */
+    /* 背景圖片 */
     .bg-container {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       background: url("bg1.jpg") no-repeat center center;
       background-size: cover;
-      filter: brightness(0.95); /* 微調亮度，讓前景更易閱讀 */
+      filter: brightness(0.9);
     }
-
-    /* 半透明前景覆蓋層 (讓背景微微透出) */
+    /* 半透明覆蓋層 */
     .overlay {
       position: relative;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.3); /* 白色半透明 */
+      background: rgba(255, 255, 255, 0.3);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -48,7 +36,14 @@
       text-align: center;
       padding: 20px;
     }
-
+    /* 書法裝飾 */
+    .calligraphy {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 120px;
+      opacity: 0.8;
+    }
     /* QR Code 區塊 */
     .qrcode {
       width: 300px;
@@ -57,38 +52,34 @@
       background-size: contain;
       margin-bottom: 20px;
     }
-
-    /* LINE ID 文字 */
+    /* LINE ID */
     .line-id {
       font-size: 36px;
-      color: #333;
       font-weight: bold;
+      color: #333;
       margin-bottom: 20px;
       text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
     }
-
-    /* 加入LINE按鈕 */
+    /* 加入好友按鈕 */
     .line-btn {
-      display: inline-block;
       padding: 15px 30px;
       font-size: 28px;
       color: #fff;
-      background-color: #06C755; /* LINE 綠 */
+      background-color: #06C755;
       border-radius: 10px;
       text-decoration: none;
       box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     }
-
-    /* 頁面底部(或上方)可以放一些縮略圖或裝飾圖片 */
+    /* 頁面底部的圖片裝飾 */
     .gallery {
       position: absolute;
-      bottom: 0;
+      bottom: 10px;
       width: 100%;
       display: flex;
       justify-content: center;
       gap: 10px;
       padding: 10px;
-      background: rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.2);
     }
     .gallery img {
       width: 80px;
@@ -97,50 +88,32 @@
       border: 2px solid #fff;
       border-radius: 6px;
     }
-
-    /* 書法裝飾可以放在右上角或左下角，根據需求微調 */
-    .calligraphy {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 120px;
-      opacity: 0.8; /* 半透明 */
-    }
-
-    /* 若想保留捲動(有更多內容)可改為 auto；若強制全畫面就可 hidden */
-    html, body {
-      overflow: auto;
-    }
-
   </style>
 </head>
 <body>
   <!-- 背景 -->
   <div class="bg-container"></div>
-
-  <!-- 半透明覆蓋層，放置主內容 -->
+  
+  <!-- 主要內容覆蓋層 -->
   <div class="overlay">
-    <!-- 書法裝飾 (可自行放位置) -->
-    <img src="calligraphy.jpg" alt="書法裝飾" class="calligraphy" />
-
+    <!-- 書法裝飾 -->
+    <img src="calligraphy.jpg" alt="書法裝飾" class="calligraphy">
+    
     <!-- QR Code -->
     <div class="qrcode"></div>
-
-    <!-- LINE 官方帳號ID -->
+    
+    <!-- LINE 帳號 -->
     <div class="line-id">@111axfqv</div>
-
-    <!-- 加LINE按鈕，連結至官方加好友網址 -->
-    <a class="line-btn" href="https://line.me/R/ti/p/@111axfqv" target="_blank" rel="noopener noreferrer">
-      加入好友
-    </a>
+    
+    <!-- 加入好友按鈕 -->
+    <a class="line-btn" href="https://line.me/R/ti/p/@111axfqv" target="_blank" rel="noopener noreferrer">加入好友</a>
   </div>
-
-  <!-- 頁面底部的照片裝飾(可改成您想要的其他擺放方式) -->
+  
+  <!-- 頁面底部圖片區 (選擇性) -->
   <div class="gallery">
-    <img src="field1.jpg" alt="田園1">
-    <img src="field2.jpg" alt="田園2">
-    <img src="field3.jpg" alt="田園3">
+    <img src="field1.jpg" alt="田園景1">
+    <img src="field2.jpg" alt="田園景2">
+    <img src="field3.jpg" alt="田園景3">
   </div>
-
 </body>
 </html>
