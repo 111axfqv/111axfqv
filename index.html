@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>加入懿昇翼墅家</title>
+  <title>加入LINE官方帳號</title>
   <style>
     /* 重置與基礎設定 */
     * {
@@ -13,87 +13,87 @@
     }
     body {
       font-family: "Noto Sans TC", sans-serif;
+      background-color: #f9f7f2;
+      /* 讓頁面可上下捲動 */
       width: 100%;
       min-height: 100vh;
+    }
+
+    /* 容器：置中並限制最大寬度，避免在大螢幕時過寬 */
+    .container {
+      width: 100%;
+      max-width: 600px; /* 可視需要調整，約為手機常見寬度 */
+      margin: 0 auto;
+    }
+
+    /* 圖片：自動依容器寬度縮放 */
+    .full-width-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 中間內容區：使用 Flex 置中排版 */
+    .middle-content {
       display: flex;
       flex-direction: column;
-      /* 如要強制全畫面可考慮 height: 100vh; 但通常讓內容自動撐開即可 */
-      background-color: #f9f7f2; /* 預設底色，可自行修改 */
-    }
-
-    /* 頂部圖片區 */
-    .top-image {
-      width: 100%;
-      /* 高度可依需求調整，這裡示範 35vh (35% 螢幕高度) */
-      height: 35vh;
-      background: url("top.jpg") no-repeat center center;
-      background-size: cover;
-    }
-
-    /* 中間內容 (QR Code + LINE ID + 按鈕) */
-    .middle-content {
-      width: 100%;
-      padding: 20px;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      /* 可加淡色底或半透明底，讓 QR Code 與文字更清楚 */
-      background: rgba(255, 255, 255, 0.6);
-      flex-shrink: 0; /* 避免被壓縮 */
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.8); /* 半透明底，凸顯內容 */
+      margin: 20px 0; /* 與上下圖片留白 */
     }
 
+    /* 縮小 QR Code */
     .qrcode {
-      width: 300px;
-      height: 300px;
-      margin: 0 auto 20px auto;
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
       background: url("qrcode.png") no-repeat center center;
       background-size: contain;
     }
 
+    /* 縮小 LINE ID 文字 */
     .line-id {
-      font-size: 36px;
+      font-size: 24px;
       font-weight: bold;
       color: #333;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
     }
 
+    /* 縮小 按鈕 */
     .line-btn {
       display: inline-block;
-      padding: 15px 30px;
-      font-size: 28px;
+      padding: 12px 24px;
+      font-size: 20px;
       color: #fff;
       background-color: #06C755; /* LINE 綠 */
-      border-radius: 10px;
+      border-radius: 8px;
       text-decoration: none;
       box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    }
-
-    /* 底部圖片區 */
-    .bottom-image {
-      width: 100%;
-      /* 高度可依需求調整，這裡示範 35vh */
-      height: 35vh;
-      background: url("bottom.jpg") no-repeat center center;
-      background-size: cover;
-      /* 若想讓頁面能上下滾動時，請注意高度配置是否會超過螢幕 */
     }
   </style>
 </head>
 <body>
 
-  <!-- 頂部圖片 -->
-  <div class="top-image"></div>
+  <div class="container">
+    <!-- 頂部圖片 (自動縮放) -->
+    <img src="top.jpg" alt="頂部田野照片" class="full-width-img">
 
-  <!-- 中間主要內容 (QR Code + LINE ID + 按鈕) -->
-  <div class="middle-content">
-    <div class="qrcode"></div>
-    <div class="line-id">@111axfqv</div>
-    <a class="line-btn" href="https://line.me/R/ti/p/@111axfqv" target="_blank" rel="noopener noreferrer">
-        點我加入【懿昇翼墅家官網】
-    </a>
+    <!-- 中間主要內容 (QR Code + LINE ID + 按鈕) -->
+    <div class="middle-content">
+      <div class="qrcode"></div>
+      <div class="line-id">@111axfqv</div>
+      <a class="line-btn" href="https://line.me/R/ti/p/@111axfqv" target="_blank" rel="noopener noreferrer">
+        加入好友
+      </a>
+    </div>
+
+    <!-- 底部圖片 (自動縮放) -->
+    <img src="bottom.jpg" alt="底部田野照片" class="full-width-img">
   </div>
-
-  <!-- 底部圖片 -->
-  <div class="bottom-image"></div>
 
 </body>
 </html>
