@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>加入LINE官方帳號</title>
+  <title>懿昇翼墅家</title>
   <style>
     /* 1. 重置與基礎設定 */
     * {
@@ -14,54 +14,105 @@
     html, body {
       width: 100%;
       height: 100%;
-      overflow: hidden; /* 避免出現捲動條 */
+      overflow: hidden; /* 避免出現捲動條，確保「同屏顯示」 */
       font-family: "Noto Sans TC", sans-serif;
     }
 
-    /* 2. 整頁背景：書法圖片 (若隱若現) */
+    /* 2. 整頁背景：書法圖片 + 若隱若現 Overlay */
     body {
-      background: url("calligraphy.jpg") center center no-repeat;
+      /* 將書法圖片設為背景，並嘗試將「書法文字」置中 */
+      background: url("calligraphy.jpg") no-repeat center center;
+      /* 若想完整顯示圖片且不裁切，可改為 contain，但可能出現留白 */
       background-size: cover;
-      position: relative; /* 讓 Overlay 能絕對定位 */
+      position: relative;
+    }
+    /* 在 body 上疊一層半透明白色，使背景「若隱若現」 */
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255, 255, 255, 0.5); /* 透明度可自行調整 */
+      z-index: 0; /* 位於最底層 */
     }
 
-    /* 3. 半透明覆蓋層 (Overlay) */
-    .overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; 
-      height: 100%;
-      /* 半透明白色，讓背景微微透出 */
-      background: rgba(255, 255, 255, 0.5);
-      /* 使用 Flexbox 置中內容 */
+    /* 3. 主容器：以 flex 垂直分三塊 (上、中、下) */
+    .container {
+      position: relative;
+      z-index: 1; /* 確保在 overlay 之上 */
+      width: 100%;
+      height: 100vh; /* 全視窗高度 */
+      display: flex;
+      flex-direction: column;
+    }
+
+    /*
+      視覺比例示範：
+      - 上區塊 (top)  : 25vh (flex:2)
+      - 中區塊 (middle): 50vh (flex:4)
+      - 下區塊 (bottom): 25vh (flex:2)
+      合計 100vh
+    */
+
+    .top, .middle, .bottom {
+      width: 100%;
+      position: relative;
+      flex-shrink: 0; /* 避免壓縮 */
+    }
+
+    .top {
+      flex: 2; /* 約 25% 高度 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eee; /* 若圖片比例與區塊不符，可能會留灰色 */
+    }
+    .bottom {
+      flex: 2; /* 約 25% 高度 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eee;
+    }
+    .middle {
+      flex: 4; /* 約 50% 高度 */
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 20px;
+      /* 可再加一層半透明底色，若需要更清晰的對比
+         background: rgba(255,255,255,0.4);
+      */
     }
 
-    /* 4. 中間內容 - QR Code、ID、按鈕都縮小一些 */
+    /* 4. 上、下區塊顯示田野圖片 (contain:完整顯示；可能留空白) */
+    .top img, .bottom img {
+      max-height: 100%; /* 不超過區塊高度 */
+      max-width: 100%;  /* 不超過區塊寬度 */
+      object-fit: contain;
+      /* 若想填滿可用 object-fit: cover; 但會裁切 */
+    }
+
+    /* 5. 中間內容：QR Code、ID、按鈕都要縮小 */
     .qrcode {
-      width: 150px;
-      height: 150px;
-      margin-bottom: 15px;
+      width: 120px;
+      height: 120px;
+      margin-bottom: 10px;
       background: url("qrcode.png") no-repeat center center;
       background-size: contain;
     }
     .line-id {
-      font-size: 20px;
+      font-size: 16px;
       font-weight: bold;
       color: #333;
       margin-bottom: 10px;
     }
     .line-btn {
       display: inline-block;
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 8px 12px;
+      font-size: 14px;
       color: #fff;
-      background-color: #06C755; /* LINE 綠 */
+      background-color: #068ac7; /* LINE 綠 */
       border-radius: 6px;
       text-decoration: none;
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -70,14 +121,27 @@
 </head>
 <body>
 
-  <!-- 半透明覆蓋層 (放置中間內容) -->
-  <div class="overlay">
-    <div class="qrcode"></div>
-    <div class="line-id">@111axfqv</div>
-    <!-- 修改按鈕文字 -->
-    <a class="line-btn" href="https://line.me/R/ti/p/@111axfqv" target="_blank" rel="noopener noreferrer">
-      加我成為懿昇翼墅家好友
-    </a>
+  <div class="container">
+    <!-- 上方區塊 (頂部圖片) -->
+    <div class="top">
+      <!-- 替換成您的頂部田野照片檔名 -->
+      <img src="top.jpg" alt="頂部田野照片">
+    </div>
+
+    <!-- 中間區塊 (QR Code + LINE ID + 按鈕) -->
+    <div class="middle">
+      <div class="qrcode"></div>
+      <div class="line-id">@111axfqv</div>
+      <a class="line-btn" href="https://line.me/R/ti/p/@111axfqv" target="_blank" rel="noopener noreferrer">
+        加我成為懿昇翼墅家好友
+      </a>
+    </div>
+
+    <!-- 下方區塊 (底部圖片) -->
+    <div class="bottom">
+      <!-- 替換成您的底部田野照片檔名 -->
+      <img src="bottom.jpg" alt="底部田野照片">
+    </div>
   </div>
 
 </body>
