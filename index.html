@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>加入LINE官方帳號</title>
   <style>
-    /* 重置與基礎設定 */
+    /* 1. 重置與基礎設定 */
     * {
       margin: 0;
       padding: 0;
@@ -15,57 +15,40 @@
       width: 100%;
       height: 100%;
       overflow: hidden; /* 避免出現捲動條 */
-    }
-    body {
       font-family: "Noto Sans TC", sans-serif;
-      background-color: #f9f7f2;
-      display: flex;
-      flex-direction: column;
     }
 
-    /* 容器：使用 100vh 分成三塊 (上圖、中間、下圖) */
-    .container {
-      width: 100%;
-      height: 100vh; /* 整個視窗高度 */
-      display: flex;
-      flex-direction: column;
+    /* 2. 整頁背景：書法圖片 (若隱若現) */
+    body {
+      background: url("calligraphy.jpg") center center no-repeat;
+      background-size: cover;
+      position: relative; /* 讓 Overlay 能絕對定位 */
     }
 
-    /* 上方圖片區 (約 2/7 高度) */
-    .top {
-      flex: 2; /* 佔 2 份 */
-      background: url("top.jpg") center center no-repeat;
-      background-size: contain; 
-      background-color: #eee; /* 若圖片比例不同，空白處以灰色填充 */
-    }
-
-    /* 中間內容區 (約 3/7 高度) */
-    .middle {
-      flex: 3; /* 佔 3 份 */
+    /* 3. 半透明覆蓋層 (Overlay) */
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; 
+      height: 100%;
+      /* 半透明白色，讓背景微微透出 */
+      background: rgba(255, 255, 255, 0.5);
+      /* 使用 Flexbox 置中內容 */
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      /* 可以加個淡色底，讓 QR Code 區域更明顯 */
-      background: rgba(255,255,255,0.7);
+      padding: 20px;
     }
 
-    /* 下方圖片區 (約 2/7 高度) */
-    .bottom {
-      flex: 2; /* 佔 2 份 */
-      background: url("bottom.jpg") center center no-repeat;
-      background-size: contain;
-      background-color: #eee;
-    }
-
-    /* 中間內容 - QR Code、ID、按鈕都縮小一些 */
+    /* 4. 中間內容 - QR Code、ID、按鈕都縮小一些 */
     .qrcode {
       width: 150px;
       height: 150px;
+      margin-bottom: 15px;
       background: url("qrcode.png") no-repeat center center;
       background-size: contain;
-      margin-bottom: 10px;
     }
     .line-id {
       font-size: 20px;
@@ -75,34 +58,27 @@
     }
     .line-btn {
       display: inline-block;
-      padding: 8px 16px;
+      padding: 10px 20px;
       font-size: 16px;
       color: #fff;
-      background-color: #069ac7; /* LINE 綠 */
+      background-color: #06C755; /* LINE 綠 */
       border-radius: 6px;
       text-decoration: none;
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
-
-    /* 若內容仍顯示不下，可再進一步縮小字體或 QR Code 尺寸 */
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- 上方圖片 -->
-    <div class="top"></div>
 
-    <!-- 中間主要內容 (QR Code + LINE ID + 按鈕) -->
-    <div class="middle">
-      <div class="qrcode"></div>
-      <div class="line-id">@111axfqv</div>
-      <a class="line-btn" href="https://line.me/R/ti/p/@111axfqv" target="_blank" rel="noopener noreferrer">
-        加入好友
-      </a>
-    </div>
-
-    <!-- 下方圖片 -->
-    <div class="bottom"></div>
+  <!-- 半透明覆蓋層 (放置中間內容) -->
+  <div class="overlay">
+    <div class="qrcode"></div>
+    <div class="line-id">@111axfqv</div>
+    <!-- 修改按鈕文字 -->
+    <a class="line-btn" href="https://line.me/R/ti/p/@111axfqv" target="_blank" rel="noopener noreferrer">
+      加我成為懿昇翼墅家好友
+    </a>
   </div>
+
 </body>
 </html>
